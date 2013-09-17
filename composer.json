@@ -1,0 +1,23 @@
+{
+    "name": "kh411d/laravel-odm",
+    "type": "library",
+    "description": "Laravel 4 doctrine mongodb integration",
+    "keywords": ["mongodb", "odm","laravel"],
+    "homepage": "https://github.com/kh411d/laravel-odm.git",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Khalid Adisendjaja",
+            "email": "khalid@think.web.id"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "doctrine/mongodb-odm": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"LaravelOdm": "src/"}
+    },
+    "minimum-stability": "dev"
+}
