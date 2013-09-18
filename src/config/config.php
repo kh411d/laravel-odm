@@ -11,14 +11,14 @@ return array(
 			    		 'server' => null,
 			    		 'options' => array( 'username' => null,
 			    							 'password' => null,
-			    							 'db' 	    => 'appdummies')
+			    							 'db' 	    => 'ccrm')
 	    			  	  ),
 
 
 	'dir' => array(
-		'proxy'    => realpath('./../').'/app/storage/cache',
-		'hydrator' => realpath('./../').'/app/storage/cache',
-		'document' => realpath('./../').'/app/models'
+		'proxy'    => storage_path().'/cache',
+		'hydrator' => storage_path().'/cache',
+		'document' => app_path().'/models'
 	),
 	   
 );
