@@ -2,13 +2,13 @@
     "name": "kh411d/laravel-odm",
     "type": "library",
     "description": "Laravel 4 doctrine mongodb integration",
-    "keywords": ["mongodb", "odm","laravel"],
+    "keywords": ["mongodb","doctrine","odm","laravel"],
     "homepage": "https://github.com/kh411d/laravel-odm.git",
     "license": "MIT",
     "authors": [
         {
             "name": "Khalid Adisendjaja",
-            "email": "khalid@think.web.id"
+            "email": "contact@khal.web.id"
         }
     ],
     "require": {
