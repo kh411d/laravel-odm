@@ -5,7 +5,16 @@ require $baseDir.'/vendor/autoload.php';
 $app = require_once __DIR__.'/bootstrap/start.php';
 
 $app->boot();
-$dm = $app['odm.documentmanager'];
+
+/*
+ * Using "kh411d/laravel-odm" package
+ *
+ */
+
+    $dm = $app['odm.documentmanager'];
+
+/**/
+
 
 /*
  * If not Using LaravelOdm ( $app['odm.documentmanager'] ) please uncomment this.
