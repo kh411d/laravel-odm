@@ -30,7 +30,8 @@ class LaravelOdmServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('kh411d/laravel-odm', __DIR__.'/../config');
+		$this->package('kh411d/laravel-odm');
+		$this->app['config']->package('kh411d/laravel-odm', __DIR__.'/../config');
 	}
 
 	/**
