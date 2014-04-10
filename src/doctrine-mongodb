@@ -1,16 +1,15 @@
 #!/usr/bin/env php
 <?php
 $baseDir = __DIR__;
-require $baseDir.'/vendor/autoload.php';
-$app = require_once __DIR__.'/bootstrap/start.php';
+require_once __DIR__.'/../autoload.php';
 
-$app->boot();
 
 /*
  * Using "kh411d/laravel-odm" package
  *
  */
-
+    $app = require_once __DIR__.'/../../bootstrap/start.php';
+    $app->boot();
     $dm = $app['odm.documentmanager'];
 
 /**/
