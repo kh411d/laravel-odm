@@ -16,7 +16,7 @@
         "illuminate/support": "4.1.x",
         "doctrine/mongodb-odm": "dev-master"
     },
-    "bin": [ "doctrine-mongodb" ],
+    "bin": [ "src/doctrine-mongodb" ],
     "autoload": {
         "psr-0": {"LaravelOdm": "src/"}
     },
