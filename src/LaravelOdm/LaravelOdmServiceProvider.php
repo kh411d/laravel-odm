@@ -42,12 +42,12 @@ class LaravelOdmServiceProvider extends ServiceProvider {
 	public function register()
 	{		
 
-		App::singleton('odm.documentmanager', function ($app) {
+		$this->app->bind('odm.documentmanager', function ($app) {
 			$conn = Config::get('laravel-odm::connection');	
 			return DocumentManager::create(new Connection($conn['server'],$conn['options']), App::make('odm.config'));
 		});
 
-		App::singleton('odm.config', function ($app){	
+		$this->app->bind('odm.config', function ($app){	
 			$conn = Config::get('laravel-odm::connection');	
 			$dir = Config::get('laravel-odm::dir');
 			$config = new Configuration();
@@ -60,7 +60,7 @@ class LaravelOdmServiceProvider extends ServiceProvider {
 			return $config;
 		});
 
-		App::singleton('odm.annotation', function($app) {
+		$this->app->bind('odm.annotation', function($app) {
 			$dir = Config::get('laravel-odm::dir');
 			AnnotationDriver::registerAnnotationClasses();
 			$reader = new AnnotationReader();
