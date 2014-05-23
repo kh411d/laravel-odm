@@ -6,18 +6,24 @@ return array(
 	 * -------------------------------------------------------------------
 	 * Server : - null ( localhost:27107 )
 	 * 			- DSN ( mongodb://[dbUser]:[dbPassword]@[dbHost]:[dbPort]/[dbName] )
+	 *
+	 *		array(
+	 *		    		 'server' => null,
+	 *		    		 'options' => array( 'username' => null,
+	 *		    							 'password' => null,
+	 *		    							 'db' 	    => null)
+	 *   			  	  ),
+	 * 
 	 */
 	'connection' => array(
 			    		 'server' => null,
-			    		 'options' => array( 'username' => null,
-			    							 'password' => null,
-			    							 'db' 	    => 'ccrm')
+			    		 'options' => array( 'db' => null )
 	    			  	  ),
 
 
 	'dir' => array(
-		'proxy'    => storage_path().'/cache',
-		'hydrator' => storage_path().'/cache',
+		'proxy'    => storage_path().'/doctrine/proxies',
+		'hydrator' => storage_path().'/doctrine/hydrators',
 		'document' => app_path().'/models'
 	),
 	   

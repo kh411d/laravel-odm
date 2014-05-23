@@ -15,42 +15,20 @@ require_once __DIR__.'/../../../autoload.php';
 /**/
 
 
-/*
- * If not Using LaravelOdm ( $app['odm.documentmanager'] ) please uncomment this.
- * Configuration, please do config manually
- *
-    use Doctrine\Common\Annotations\AnnotationReader;
-    use Doctrine\ODM\MongoDB\DocumentManager;
-    use Doctrine\MongoDB\Connection;
-    use Doctrine\ODM\MongoDB\Configuration;
-    use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
+/* Define STDIN in case if it is not already defined by PHP for some reason */
+    if(!defined("STDIN")) {
+        define("STDIN", fopen('php://stdin','r'));
+    }
 
-    $conf = array(
-                    'conn' => array(
-                                     'server' => null,
-                                     'options' => array( 'username' => null,
-                                                         'password' => null,
-                                                         'db'       => 'ccrm')
-                    ),
-                    'dir' => array(
-                            'proxy'    => $baseDir.'/app/storage/cache',
-                            'hydrator' => $baseDir.'/app/storage/cache',
-                            'document' => $baseDir.'/app/models'
-                    ),
-    );
+    echo "Database Name (enter below):\n";
+    $db = fread(STDIN, 80); // Read up to 80 characters or a newline
 
-    $config = new Configuration();
-    $config->setProxyDir($conf['dir']['proxy']);
-    $config->setProxyNamespace('Proxies');
-    $config->setHydratorDir($conf['dir']['hydrator']);
-    $config->setHydratorNamespace('Hydrators');
-    AnnotationDriver::registerAnnotationClasses();
-    $reader = new AnnotationReader();
-    $config->setMetadataDriverImpl(new AnnotationDriver($reader, $conf['dir']['document']));
-    $config->setDefaultDB($conf['conn']['options']['db']);
 
-    $dm = DocumentManager::create(new Connection($conf['conn']['server'],$conf['conn']['options']), $config);
+    $app['config']->set('laravel-odm::connection.options.db',trim($db));
+    $dm = $app['odm.documentmanager'];
+
 /**/
+
 
 
 
@@ -65,7 +43,7 @@ require_once __DIR__.'/../../../autoload.php';
     $helperSet = isset($helperSet) ? $helperSet : new \Symfony\Component\Console\Helper\HelperSet();
     foreach ($helpers as $name => $helper) { $helperSet->set($helper, $name); }
 
-    $cli = new \Symfony\Component\Console\Application('Doctrine ODM MongoDB Command Line Interface', Doctrine\ODM\MongoDB\Version::VERSION);
+    $cli = new \Symfony\Component\Console\Application('Doctrine ODM MongoDB Command Line Interface', null);
     $cli->setCatchExceptions(true);
     $cli->setHelperSet($helperSet);
     $cli->addCommands(array(
